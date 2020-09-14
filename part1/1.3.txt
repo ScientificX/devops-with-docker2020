@@ -1,0 +1,1 @@
+I navigated to the source code on github and found the input that valid which = "basics" typed that and teh output was = "This is the secret message"
