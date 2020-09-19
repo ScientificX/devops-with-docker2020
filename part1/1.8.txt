@@ -1,0 +1,12 @@
+commands used - 
+
+docker commit 5fc8dd6e2376 volume-exercisec
+
+docker diff
+
+docker run -it devopsdockeruh/first_volume_exercise bash
+
+edited the code to save the logs to a data folder
+
+docker run -v $(pwd):/usr/app/data volume-exercisec
+

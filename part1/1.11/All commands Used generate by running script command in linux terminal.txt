@@ -1,0 +1,508 @@
+Script started on 2020-09-19 08:49:15+0000
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# ls
+1.11.txt    README.md  index.js  package-lock.json  prettier.config.js  typescript
+Dockerfile  config.js  logs.txt  package.json       [0m[01;34mserver[0m
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker volume inspect backen 
+d
+[
+    {
+        "CreatedAt": "2020-09-18T21:23:14Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/backend/_data",
+        "Name": "backend",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker container ls -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+c6a9a3e7a2ab        a5c28b825174        "/bin/sh -c 'npm sta…"   12 hours ago        Exited (254) 12 hours ago                       festive_borg
+1f6f73cb842b        66c739b64c1e        "/bin/sh -c 'npm sta…"   12 hours ago        Exited (254) 12 hours ago                       ecstatic_colden
+96f2602bc0f7        4255b9c1019f        "/bin/sh -c 'npm sta…"   12 hours ago        Exited (254) 12 hours ago                       clever_kowalevski
+de07eb18f4d4        c871c45b1573        "/bin/sh -c 'apt-get…"   12 hours ago        Exited (1) 12 hours ago                         modest_darwin
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker run c6a9a3e7a2ab
+Unable to find image 'c6a9a3e7a2ab:latest' locally
+docker: Error response from daemon: pull access denied for c6a9a3e7a2ab, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker run festive_borg
+Unable to find image 'festive_borg:latest' locally
+docker: Error response from daemon: pull access denied for festive_borg, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker build -t backend -v b 
+ackend:d.
+^C
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker build -t backend -v ba
+ackend:d.[K .
+unknown shorthand flag: 'v' in -v
+See 'docker build --help'.
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# vim Dockerfile 
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[25;1H"Dockerfile" 21L, 343C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[38;5;130mFROM [mubuntu:16.04
+
+[38;5;130mRUN [mapt-get -y update && apt-get -y upgrade
+
+[38;5;130mRUN [mapt-get install -y git
+
+[38;5;130mRUN [mapt-get install -y curl
+
+[38;5;130mRUN [mcurl -sL https://deb.nodesource.com/setup_10.x | bash
+
+[38;5;130mRUN [mapt install -y nodejs
+
+[38;5;130mRUN [mgit clone https://github.com/docker-hy/backend-example-docker.git /backend
+
+[38;5;130mWORKDIR [m/backend
+
+[38;5;130mRUN [mnpm i
+
+[38;5;130mRUN [mnpm start
+
+[38;5;130mEXPOSE [m8000
+[94m~                                                                                      [23;1H~                                                                                      [24;1H~                                                                                      [m[25;70H17,9[10CAll[17;9H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[27m[23m[29m[m[H[2J[?25l[1;1H[93mFROM [mubuntu:16.04
+
+[93mRUN [mapt-get -y update && apt-get -y upgrade
+
+[93mRUN [mapt-get install -y git
+
+[93mRUN [mapt-get install -y curl
+
+[93mRUN [mcurl -sL https://deb.nodesource.com/setup_10.x | bash
+
+[93mRUN [mapt install -y nodejs
+
+[93mRUN [mgit clone https://github.com/docker-hy/backend-example-docker.git /backend
+
+[93mWORKDIR [m/backend
+
+[93mRUN [mnpm i
+
+[93mRUN [mnpm start
+
+[93mEXPOSE [m8080
+[94m~                                                                                      [23;1H~                                                                                      [24;1H~                                                                                      [m[25;70H17,9[10CAll
+"Dockerfile" 21L, 343C[17;9H[?25h[?25l[25;60Hj[17;9H[25;60H [18;1H[25;71H8,0-1[18;1H[?25h[?25l[25;60Hj[18;1H[25;60H [19;1H[25;71H9,1  [19;1H[?25h[?25l[25;60Hj[19;1H[25;60H [20;1H[25;70H20,0-1[20;1H[?25h[?25l[25;60Hj[20;1H[25;60H [21;1H[25;71H1,1  [21;1H[?25h[?25l[25;60Hj[21;1H[25;60H [21;1H[?25h[?25l[25;60Hj[21;1H[25;60H [21;1H[?25h[?25l[25;60H^X[21;1H[25;60H  [21;11H79[25;74H1[21;11H[?25h[?25l[25;1HType  :qa!  and press <Ente...don all changes and exit Vim[25;70H[K[25;70H21,11[9CAll[21;11H[?25h[?25l[25;60H:[21;11H[25;1H[K[25;1H:[?2004h[?25hq[?25l[?25ha[?25l[?25h
+[?25l[97m[41mE37: No write since last change[m
+
+[97m[41mE162: No write since last change for buffer "Dockerfile"[?2004h[m
+
+[38;5;121mPress ENTER or type command to continue[?25h[?25l[21;11H[m[25;60H:[21;11H[25;1H[K[25;1H:[?2004h[?25hq[?25l[?25ha[?25l[?25h![?25l[?25h
+[?25l[?2004l[25;1H[K[25;1H[?2004l[?1l>[?25h[?1049l[23;0;0t]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# vim Dockerfile 
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[25;1H"Dockerfile" 21L, 343C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[38;5;130mFROM [mubuntu:16.04
+
+[38;5;130mRUN [mapt-get -y update && apt-get -y upgrade
+
+[38;5;130mRUN [mapt-get install -y git
+
+[38;5;130mRUN [mapt-get install -y curl
+
+[38;5;130mRUN [mcurl -sL https://deb.nodesource.com/setup_10.x | bash
+
+[38;5;130mRUN [mapt install -y nodejs
+
+[38;5;130mRUN [mgit clone https://github.com/docker-hy/backend-example-docker.git /backend
+
+[38;5;130mWORKDIR [m/backend
+
+[38;5;130mRUN [mnpm i
+
+[38;5;130mRUN [mnpm start
+
+[38;5;130mEXPOSE [m8080
+[94m~                                                                                      [23;1H~                                                                                      [24;1H~                                                                                      [m[25;70H21,11[9CAll[21;11H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[27m[23m[29m[m[H[2J[?25l[1;1H[93mFROM [mubuntu:16.04
+
+[93mRUN [mapt-get -y update && apt-get -y upgrade
+
+[93mRUN [mapt-get install -y git
+
+[93mRUN [mapt-get install -y curl
+
+[93mRUN [mcurl -sL https://deb.nodesource.com/setup_10.x | bash
+
+[93mRUN [mapt install -y nodejs
+
+[93mRUN [mgit clone https://github.com/docker-hy/backend-example-docker.git /backend
+
+[93mWORKDIR [m/backend
+
+[93mRUN [mnpm i
+
+[93mRUN [mnpm start
+
+[93mEXPOSE [m8080
+[94m~                                                                                      [23;1H~                                                                                      [24;1H~                                                                                      [m[25;70H21,11[9CAll
+"Dockerfile" 21L, 343C[21;11H[?25h[?25l[25;60Hk[21;11H[25;60H [20;1H[25;71H0,0-1[20;1H[?25h[?25l[25;60Hk[20;1H[25;60H [19;1H[25;70H19,1  [19;1H[?25h[?25l[25;60Hk[19;1H[25;60H [18;1H[25;71H8,0-1[18;1H[?25h[?25l[25;60Hk[18;1H[25;60H [17;1H[25;71H7,1  [17;1H[?25h[?25l[25;60Hk[17;1H[25;60H [16;1H[25;71H6,0-1[16;1H[?25h[?25l[25;60Hj[16;1H[25;60H [17;1H[25;71H7,1  [17;1H[?25h[?25l[25;60Hj[17;1H[25;60H [18;1H[25;71H8,0-1[18;1H[?25h[?25l[25;60Hj[18;1H[25;60H [19;1H[25;71H9,1  [19;1H[?25h[?25l[25;60Hj[19;1H[25;60H [20;1H[25;70H20,0-1[20;1H[?25h[?25l[25;60Hk[20;1H[25;60H [19;1H[25;70H19,1  [19;1H[?25h[?25l[25;60Hj[19;1H[25;60H [20;1H[25;70H20,0-1[20;1H[?25h[?25l[25;60Hj[20;1H[25;60H [21;1H[25;71H1,1  [21;1H[?25h[?25l[25;60Hj[21;1H[25;60H [21;1H[?25h[?25l[25;60Hj[21;1H[25;60H [21;1H[?25h[?25l[25;60Ho[21;1H[25;60H [22;1H
+
+
+[1m-- INSERT --[m[25;14H[K[25;70H22,1[10CAll[22;1H[K[22;1H[?25h[25;1H[K[22;1H[?25l[25;60H^[[22;1H[25;60H  [22;1H[25;70H22,0-1[8CAll[22;1H[?25h[?25l[25;60Ho[22;1H[25;60H [23;1H
+
+[1m-- INSERT --[m[25;70H[K[25;70H23,1[10CAll[23;1H[K[23;1H[?25h[?25li[25;73H2[23;2H[?25h[?25l[23;1H[K[25;73H1[23;1H[?25h[?25lC[25;73H2[23;2H[?25h[?25lM[25;73H3[23;3H[?25h[?25lD[25;73H4[23;4H[?25h[?25l
+[93mCMD [m[25;73H5[23;5H[?25h[?25l[[25;73H6[23;6H[?25h[?25l[95m"[m[25;73H7[23;7H[?25h[?25l[95m/[m[25;73H8[23;8H[?25h[?25l[95mb[m[25;73H9[23;9H[?25h[?25l[95mi[m[25;73H10[23;10H[?25h[?25l[95mn[m[25;74H1[23;11H[?25h[?25l[95m/[m[25;74H2[23;12H[?25h[?25l[95mb[m[25;74H3[23;13H[?25h[?25l[95ma[m[25;74H4[23;14H[?25h[?25l[95ms[m[25;74H5[23;15H[?25h[?25l[95mh[m[25;74H6[23;16H[?25h[?25l[95m"[m[25;74H7[23;17H[?25h[?25l][23;5H[46m[[11C][m[25;74H8[23;18H[?25h[25;1H[K[23;17H[?25l[25;60H^[[23;17H[25;60H  [23;18H[25;70H23,17[9CAll[23;17H[?25h[?25l[25;60H:[23;17H[25;60H[K[25;1H:[?2004h[?25hw[?25l[?25h
+[?25l"Dockerfile" 23L, 362C written[23;17H[25;70H23,17[9CAll[25;70H[K[25;70H23,17[9CAll[23;17H[?25h[?25l[25;60Hj[23;17H[25;60H [23;17H[?25h[?25l[25;60Hj[23;17H[25;60H [23;17H[?25h[?25l[25;60Hk[23;17H[25;60H [22;1H[23;5H[[11C][25;71H2,0-1[22;1H[?25h[?25l[25;60Hk[22;1H[25;60H [21;11H[25;71H1,11 [21;11H[?25h[?25l[25;60H:[21;11H[25;1H[K[25;1H:[?2004h[?25hq[?25l[?25h
+[?25l[?2004l[25;1H[K[25;1H[?2004l[?1l>[?25h[?1049l[23;0;0t]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker [K build .
+Sending build context to Docker daemon  287.2kB
+
+
+Step 1/12 : FROM ubuntu:16.04
+ ---> c871c45b1573
+Step 2/12 : RUN apt-get -y update && apt-get -y upgrade
+ ---> Using cache
+ ---> fe1eee956371
+Step 3/12 : RUN apt-get install -y git
+ ---> Using cache
+ ---> f173db7f819a
+Step 4/12 : RUN apt-get install -y curl
+ ---> Using cache
+ ---> a4f70a011ce8
+Step 5/12 : RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+ ---> Using cache
+ ---> 0b3169a0d911
+Step 6/12 : RUN apt install -y nodejs
+ ---> Using cache
+ ---> 0c81c5944797
+Step 7/12 : RUN git clone https://github.com/docker-hy/backend-example-docker.git /backend
+ ---> Using cache
+ ---> ef17732dd141
+Step 8/12 : WORKDIR /backend
+ ---> Using cache
+ ---> 817c14426140
+Step 9/12 : RUN npm i
+ ---> Using cache
+ ---> d2bcbd4b9a6e
+Step 10/12 : RUN npm start
+ ---> Running in ad11e1f518a0
+
+> backend-example-docker@1.0.0 start /backend
+> node index.js
+
+ENV values set as follows: { DB:
+   { username: undefined,
+     password: undefined,
+     database: undefined,
+     host: 'localhost' },
+  PORT: 8000,
+  FRONT_URL: '',
+  REDIS: undefined,
+  REDIS_PORT: 6379 }
+[Exercise 2.6+] DB_USERNAME and/or DB_PASSWORD are not defined, skipping db connection
+[Exercise 2.5+] REDIS is not defined, skipping redis connection
+Started on port 8000
+^C
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker build .vim Dockerfile 
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[25;1H"Dockerfile" 23L, 362C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[38;5;130mFROM [mubuntu:16.04
+
+[38;5;130mRUN [mapt-get -y update && apt-get -y upgrade
+
+[38;5;130mRUN [mapt-get install -y git
+
+[38;5;130mRUN [mapt-get install -y curl
+
+[38;5;130mRUN [mcurl -sL https://deb.nodesource.com/setup_10.x | bash
+
+[38;5;130mRUN [mapt install -y nodejs
+
+[38;5;130mRUN [mgit clone https://github.com/docker-hy/backend-example-docker.git /backend
+
+[38;5;130mWORKDIR [m/backend
+
+[38;5;130mRUN [mnpm i
+
+[38;5;130mRUN [mnpm start
+
+[38;5;130mEXPOSE [m8080
+
+[38;5;130mCMD [m[[31m"/bin/bash"[m]
+[94m~                                                                                      [m[25;70H21,11[9CAll[21;11H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[27m[23m[29m[m[H[2J[?25l[1;1H[93mFROM [mubuntu:16.04
+
+[93mRUN [mapt-get -y update && apt-get -y upgrade
+
+[93mRUN [mapt-get install -y git
+
+[93mRUN [mapt-get install -y curl
+
+[93mRUN [mcurl -sL https://deb.nodesource.com/setup_10.x | bash
+
+[93mRUN [mapt install -y nodejs
+
+[93mRUN [mgit clone https://github.com/docker-hy/backend-example-docker.git /backend
+
+[93mWORKDIR [m/backend
+
+[93mRUN [mnpm i
+
+[93mRUN [mnpm start
+
+[93mEXPOSE [m8080
+
+[93mCMD [m[[95m"/bin/bash"[m]
+[94m~                                                                                      [m[25;70H21,11[9CAll
+"Dockerfile" 23L, 362C[21;11H[?25h[?25l[25;60Hj[21;11H[25;60H [22;1H[25;71H2,0-1[22;1H[?25h[?25l[25;60Hj[22;1H[25;60H [23;1H[25;71H3,1  [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hj[23;1H[25;60H [23;1H[?25h[?25l[25;60Hk[23;1H[25;60H [22;1H[25;71H2,0-1[22;1H[?25h[?25l[25;60Hk[22;1H[25;60H [21;1H[25;71H1,1  [21;1H[?25h[?25l[25;60Hk[21;1H[25;60H [20;1H[25;71H0,0-1[20;1H[?25h[?25l[25;60Hk[20;1H[25;60H [19;1H[25;70H19,1  [19;1H[?25h[?25l[25;60Hd[19;1H[?25h[?25l[25;61Hd[19;1H[25;60H  [19;1H[19;24r[24;1H
+[1;25r[24;1H[94m~                                                                                      [m[25;1H[K[25;70H19,0-1[8CAll[19;1H[?25h[?25l[25;60Hk[19;1H[25;60H [18;1H[25;71H8[18;1H[?25h[?25l[25;60Hd[18;1H[?25h[?25l[25;61Hd[18;1H[25;60H  [18;1H[18;24r[24;1H
+[1;25r[24;1H[94m~                                                                                      [m[25;70H[K[25;70H18,0-1[8CAll[18;1H[?25h[?25l[25;60Hj[18;1H[25;60H [19;1H[25;71H9,1  [19;1H[?25h[?25l[25;60H:[19;1H[25;60H[K[25;1H:[?2004h[?25hw[?25l[?25h
+[?25l"Dockerfile" 21L, 347C written[19;1H[25;70H19,1[10CAll[25;70H[K[25;70H19,1[10CAll[19;1H[?25h[?25l[25;60H:[19;1H[25;1H[K[25;1H:[?2004h[?25hq[?25l[?25h
+[?25l[?2004l[25;1H[K[25;1H[?2004l[?1l>[?25h[?1049l[23;0;0t]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# vim Dockerfile [1Pdocker build .
+Sending build context to Docker daemon  291.3kB
+
+
+Step 1/11 : FROM ubuntu:16.04
+ ---> c871c45b1573
+Step 2/11 : RUN apt-get -y update && apt-get -y upgrade
+ ---> Using cache
+ ---> fe1eee956371
+Step 3/11 : RUN apt-get install -y git
+ ---> Using cache
+ ---> f173db7f819a
+Step 4/11 : RUN apt-get install -y curl
+ ---> Using cache
+ ---> a4f70a011ce8
+Step 5/11 : RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+ ---> Using cache
+ ---> 0b3169a0d911
+Step 6/11 : RUN apt install -y nodejs
+ ---> Using cache
+ ---> 0c81c5944797
+Step 7/11 : RUN git clone https://github.com/docker-hy/backend-example-docker.git /backend
+ ---> Using cache
+ ---> ef17732dd141
+Step 8/11 : WORKDIR /backend
+ ---> Using cache
+ ---> 817c14426140
+Step 9/11 : RUN npm i
+ ---> Using cache
+ ---> d2bcbd4b9a6e
+Step 10/11 : EXPOSE 8080
+ ---> Running in 0fb2687008cc
+Removing intermediate container 0fb2687008cc
+ ---> 68e7477b8e40
+Step 11/11 : CMD ["/bin/bash"]
+ ---> Running in a720d925f082
+Removing intermediate container a720d925f082
+ ---> db1e16bdbbaf
+Successfully built db1e16bdbbaf
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker run db1e16bdbbaf
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker run db1e16bdbbaf npm  
+start
+
+> backend-example-docker@1.0.0 start /backend
+> node index.js
+
+ENV values set as follows: { DB:
+   { username: undefined,
+     password: undefined,
+     database: undefined,
+     host: 'localhost' },
+  PORT: 8000,
+  FRONT_URL: '',
+  REDIS: undefined,
+  REDIS_PORT: 6379 }
+[Exercise 2.6+] DB_USERNAME and/or DB_PASSWORD are not defined, skipping db connection
+[Exercise 2.5+] REDIS is not defined, skipping redis connection
+Started on port 8000
+^C^C]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker run db1e16bdbbaf npm s
+start
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-16bdbbaf npm start[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ct16bdbbaf npm start[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C16bdbbaf npm [1Pstart[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cv16bdbbaf npm start[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C 16bdbbaf npm start[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C 16bdbbaf n[1@p[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cb 16bdbbaf [1@n[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca 16bdbbaf[1@ [A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cc 16bdbba[1@f[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ck 16bdbb[1@a[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ce 16bdb[1@b[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cn 16bd[C[1@b[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cd 16b[1@d[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C: 16[1@b[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C/ 1[1@6[A
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cb [1@1
+[1@a[1@c[1@k[1@e[1@n[1@d
+Unable to find image 'db1e-v:latest' locally
+docker: Error response from daemon: pull access denied for db1e-v, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# 
+[K]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker buld -t backend .
+unknown shorthand flag: 't' in -t
+See 'docker --help'.
+
+Usage:	docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/root/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default
+                           context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/root/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/root/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/root/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  builder     Manage builds
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  engine      Manage the docker engine
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker buld -t backend .[C[1@i
+Sending build context to Docker daemon  303.6kB
+
+
+Step 1/11 : FROM ubuntu:16.04
+ ---> c871c45b1573
+Step 2/11 : RUN apt-get -y update && apt-get -y upgrade
+ ---> Using cache
+ ---> fe1eee956371
+Step 3/11 : RUN apt-get install -y git
+ ---> Using cache
+ ---> f173db7f819a
+Step 4/11 : RUN apt-get install -y curl
+ ---> Using cache
+ ---> a4f70a011ce8
+Step 5/11 : RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+ ---> Using cache
+ ---> 0b3169a0d911
+Step 6/11 : RUN apt install -y nodejs
+ ---> Using cache
+ ---> 0c81c5944797
+Step 7/11 : RUN git clone https://github.com/docker-hy/backend-example-docker.git /backend
+ ---> Using cache
+ ---> ef17732dd141
+Step 8/11 : WORKDIR /backend
+ ---> Using cache
+ ---> 817c14426140
+Step 9/11 : RUN npm i
+ ---> Using cache
+ ---> d2bcbd4b9a6e
+Step 10/11 : EXPOSE 8080
+ ---> Using cache
+ ---> 68e7477b8e40
+Step 11/11 : CMD ["/bin/bash"]
+ ---> Using cache
+ ---> db1e16bdbbaf
+Successfully built db1e16bdbbaf
+Successfully tagged backend:latest
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker run -b [Kv[K [K[Kv ackedn[K[K[K[K[K[K[K backend:/backend backedn[K[Knd
+^C
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker run -v backend:/backend backend npm start
+
+]0;root@ilovetypescript: /var/lib/docker/volumes/backendroot@ilovetypescript:/var/lib/docker/volumes/backend# docker run -v backend:/backend -p 8080:8000 backend npm start 
+
+> backend-example-docker@1.0.0 start /backend
+> node index.js
+
+ENV values set as follows: { DB:
+   { username: undefined,
+     password: undefined,
+     database: undefined,
+     host: 'localhost' },
+  PORT: 8000,
+  FRONT_URL: '',
+  REDIS: undefined,
+  REDIS_PORT: 6379 }
+[Exercise 2.6+] DB_USERNAME and/or DB_PASSWORD are not defined, skipping db connection
+[Exercise 2.5+] REDIS is not defined, skipping redis connection
+Started on port 8000
+^C^C]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# ll
+total 140
+drwxr-xr-x  4 root    root     4096 Sep 19 08:55 [0m[01;34m.[0m/
+drwxr-xr-x 27 fascher fascher  4096 Sep 19 08:46 [01;34m..[0m/
+drwxr-xr-x  8 root    root     4096 Sep 18 20:54 [01;34m.git[0m/
+-rw-r--r--  1 root    root      982 Sep 18 20:54 .gitignore
+-rw-r--r--  1 root    root    24576 Sep 19 08:57 1.11.txt
+-rw-r--r--  1 root    root      347 Sep 19 08:55 Dockerfile
+-rw-r--r--  1 root    root     1368 Sep 18 20:54 README.md
+-rw-r--r--  1 root    root      518 Sep 18 20:54 config.js
+-rw-r--r--  1 root    root       46 Sep 18 20:54 index.js
+-rw-r--r--  1 root    root        1 Sep 18 20:54 logs.txt
+-rw-r--r--  1 root    root    64147 Sep 18 20:54 package-lock.json
+-rw-r--r--  1 root    root      706 Sep 18 20:54 package.json
+-rw-r--r--  1 root    root       80 Sep 18 20:54 prettier.config.js
+drwxr-xr-x  4 root    root     4096 Sep 18 20:54 [01;34mserver[0m/
+-rw-r--r--  1 root    root     4096 Sep 18 21:24 typescript
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# docker volume inspect backend
+[
+    {
+        "CreatedAt": "2020-09-19T08:57:58Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/backend/_data",
+        "Name": "backend",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# ^C
+]0;root@ilovetypescript: /home/fascher/backend-example-dockerroot@ilovetypescript:/home/fascher/backend-example-docker# cd /var/lib/docker/volumes/backend/_data
+]0;root@ilovetypescript: /var/lib/docker/volumes/backend/_dataroot@ilovetypescript:/var/lib/docker/volumes/backend/_data# ls
+README.md  config.js  index.js  logs.txt  [0m[01;34mnode_modules[0m  package-lock.json  package.json  prettier.config.js  [01;34mserver[0m
+]0;root@ilovetypescript: /var/lib/docker/volumes/backend/_dataroot@ilovetypescript:/var/lib/docker/volumes/backend/_data# cat logs.txt 
+
+]0;root@ilovetypescript: /var/lib/docker/volumes/backend/_dataroot@ilovetypescript:/var/lib/docker/volumes/backend/_data# cd ..
+]0;root@ilovetypescript: /var/lib/docker/volumes/backendroot@ilovetypescript:/var/lib/docker/volumes/backend# it worked
+it: command not found
+
+]0;root@ilovetypescript: /var/lib/docker/volumes/backendroot@ilovetypescript:/var/lib/docker/volumes/backend# d[Kexit
+exit
+
+Script done on 2020-09-19 08:59:14+0000

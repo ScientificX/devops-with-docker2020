@@ -1,0 +1,7 @@
+"Docker is easy"
+Mon, 14 Sep 2020 11:18:39 GMT
+Mon, 14 Sep 2020 11:18:42 GMT
+Mon, 14 Sep 2020 11:18:45 GMT
+Mon, 14 Sep 2020 11:18:48 GMT
+
+comand-givne - tail -f ./logs.txt 
